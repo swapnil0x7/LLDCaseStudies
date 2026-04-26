@@ -1,0 +1,22 @@
+.outer {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  gap: 4px;
+}
+
+.tab {
+  padding: 4px 8px;
+  border: 1px solid rgb(71, 71, 71);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.tab-container {
+  padding: 16px;
+  margin: 0 16px;
+  border: 1px solid rgb(71, 71, 71);
+  border-radius: 4px;
+  height: 100%;
+  min-height: 90vh;
+}
