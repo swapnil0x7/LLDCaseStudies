@@ -1,0 +1,14 @@
+.container {
+  margin: 8px 32px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+}
+
+.expand-collapse {
+  cursor: pointer;
+}

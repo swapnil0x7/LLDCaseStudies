@@ -1,9 +1,11 @@
+import FileExplorer from "./collection/FileExplorer/FileExplorer";
 import TabForm from "./collection/TabForm/TabForm";
 
 function App() {
   return (
     <>
-      <TabForm />
+      {/* <TabForm /> */}
+      <FileExplorer />
     </>
   );
 }
