@@ -1,0 +1,31 @@
+1. Cache Storage Location
+
+Problem: useState for cache causes unnecessary re-renders on every write
+Fix: useRef — persists across renders, mutations don't trigger re-renders
+Bonus: No stale closure problem — ref.current is always a live read
+
+2. Cache Hit Short-Circuit
+
+Problem: Cache hit sets results but doesn't return — fetch still runs
+Fix: Early return after serving from cache
+Bonus: Check TTL freshness at read time, not just existence
+
+3. Race Conditions
+
+Problem: Debounce controls fire rate, not response order — slow response can overwrite fast one
+Fix (primary): AbortController — cancel the in-flight request in useEffect cleanup
+Fix (fallback): Request-ID counter in a useRef — ignore responses whose ID isn't latest
+When to use which: AbortController for fetch, request-ID for non-cancellable APIs (SDKs, WebSockets)
+
+4. IndexedDB Persistence
+
+When to upgrade from localStorage: Cache exceeds a few MB, binary data (images/blobs), need async non-blocking writes, need indexed queries
+Library: idb-keyval — looks identical to localStorage but async and no size limit
+Key difference from localStorage: Stores structured objects natively (no JSON.stringify/parse), async so it never blocks the main thread
+Hydration window: Cache loads async after mount — brief gap where cache is empty. Track a hydrated boolean if it matters
+
+5. Keyboard Navigation + Accessibility
+
+What they ask: Arrow keys to move through results, Enter to select, Escape to close
+ARIA attributes: role="combobox", aria-expanded, aria-activedescendant, aria-autocomplete="list"
+Why it matters: Senior roles are expected to think about a11y without being prompted
